@@ -14,4 +14,8 @@ public class UserRepositoryImp implements UserRepository {
     public UserEntity doLogin(long u_id, String u_pwd) {
         return usermapper.doLogin(u_id,u_pwd);
     }
+    @Override
+    public int doRegister(long u_tel, String u_pwd) {
+        return usermapper.doRegister(u_tel,u_pwd);
+    }
 }

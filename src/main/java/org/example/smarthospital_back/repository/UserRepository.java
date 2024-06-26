@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository {
 
     UserEntity doLogin(long u_id, String u_pwd);
+    int doRegister(long u_tel, String u_pwd);
 }

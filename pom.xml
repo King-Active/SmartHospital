@@ -72,6 +72,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
+                    <executable>true</executable>
                 </configuration>
             </plugin>
             <plugin>
@@ -80,7 +81,8 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>org.example.smarthospital_back.SmartHospitalBackApplication</mainClass>
-                    <skip>true</skip>
+                    <executable>true</executable>
+                    <layout>JAR</layout>
                 </configuration>
                 <executions>
                     <execution>

@@ -14,8 +14,6 @@ public class UserController {
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
     public String doLogin(long u_id,String u_pwd){
-        System.out.println(u_id);
-        System.out.println(u_pwd);
         if(u_id == 0 || "".equals(u_pwd)){
             return "格式错误";
         }
@@ -24,6 +22,20 @@ public class UserController {
             return "用户不存在";
         } else {
             return "登录成功";
+        }
+    }
+
+    @RequestMapping(value = "/doRegister", method = RequestMethod.POST)
+    @ResponseBody
+    public String doRegister(long u_tel,String u_pwd){
+        if(u_tel == 0 || "".equals(u_pwd)){
+            return "格式错误";
+        }
+        int regResult = ur.doRegister(u_tel,u_pwd);
+        if(regResult == 0) {
+            return "注册失败";
+        } else {
+            return "注册成功";
         }
     }
 
