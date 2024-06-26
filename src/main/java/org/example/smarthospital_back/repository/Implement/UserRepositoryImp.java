@@ -11,7 +11,7 @@ public class UserRepositoryImp implements UserRepository {
     @Autowired
     UserMapper usermapper;
     @Override
-    public UserEntity doLogin(long u_id, String u_pwd) {
+    public UserEntity doLogin(int u_id, String u_pwd) {
         return usermapper.doLogin(u_id,u_pwd);
     }
 }

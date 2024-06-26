@@ -13,13 +13,12 @@ public class UserController {
 
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
-    public String doLogin(long u_id,String u_pwd){
-        System.out.println(u_id);
-        System.out.println(u_pwd);
+    public String doLogin(@RequestParam int u_id, @RequestParam String u_pwd){
         if(u_id == 0 || "".equals(u_pwd)){
             return "格式错误";
         }
         UserEntity ue = ur.doLogin(u_id,u_pwd);
+        System.out.println(ue);
         if(ue == null) {
             return "用户不存在";
         } else {
