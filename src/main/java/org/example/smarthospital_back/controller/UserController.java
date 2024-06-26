@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/User")
 public class UserController {
-    @Qualifier("userRepository")
     @Autowired
     UserRepository ur;
 
