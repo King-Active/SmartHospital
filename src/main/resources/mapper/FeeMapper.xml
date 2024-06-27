@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.smarthospital_back.mapper.FeeMapper">
+
+    <!-- 生成缴费单 -->
+    <insert id="generateFee" parameterType="org.example.smarthospital_back.entity.FeeEntity">
+        insert into Fee (fee_type, fee_money, u_id, fee_time) values
+        (#{fee_type}, #{fee_money}, #{u_id}, #{fee_time});
+    </insert>
+
+    <!-- 支付缴费单 -->
+    <update id="payFee" parameterType="org.example.smarthospital_back.entity.FeeEntity">
+        update Fee set fee_ispaid = 1 where fee_id = #{fee_id};
+    </update>
+
+    <!-- 检查缴费单 -->
+    <select id="checkFee" resultType="org.example.smarthospital_back.entity.FeeEntity">
+        select * from Fee where u_id = #{u_id};
+    </select>
+</mapper>
