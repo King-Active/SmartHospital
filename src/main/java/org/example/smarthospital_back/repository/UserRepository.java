@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository {
 
-    UserEntity doLogin(int u_id, String u_pwd);
+    UserEntity doLogin(String u_tel, String u_pwd);
 }

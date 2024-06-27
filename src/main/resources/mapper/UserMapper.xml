@@ -3,6 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.smarthospital_back.mapper.UserMapper">
     <select id="doLogin" resultType="org.example.smarthospital_back.entity.UserEntity" >
-        select * from User where u_id = #{u_id} and u_pwd = #{u_pwd};
+        select * from User where u_tel = #{u_tel} and u_pwd = #{u_pwd};
     </select>
 </mapper>

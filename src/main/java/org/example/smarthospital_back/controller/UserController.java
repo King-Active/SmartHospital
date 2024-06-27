@@ -13,12 +13,11 @@ public class UserController {
 
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
-    public String doLogin(@RequestParam int u_id, @RequestParam String u_pwd){
-        if(u_id == 0 || "".equals(u_pwd)){
+    public String doLogin(@RequestParam String u_tel, @RequestParam String u_pwd){
+        if("".equals(u_tel)|| "".equals(u_pwd)){
             return "格式错误";
         }
-        UserEntity ue = ur.doLogin(u_id,u_pwd);
-        System.out.println(ue);
+        UserEntity ue = ur.doLogin(u_tel,u_pwd);
         if(ue == null) {
             return "用户不存在";
         } else {
@@ -29,7 +28,16 @@ public class UserController {
     @RequestMapping(value = "/doTest", method = RequestMethod.GET)
     @ResponseBody
     public String doTest(){
-        System.out.println("oiashfoiahfoiahioa");
         return "登录成功";
     }
+
+//    @RequestMapping(value = "/forgetPassword", method = RequestMethod.POST)
+//    @ResponseBody
+//    public String forgetPassword(@RequestParam int u_tel, @RequestParam String u_pwd){
+//        if(u_tel == 0 || "".equals(u_pwd)){
+//            return "格式错误";
+//        }
+//        UserEntity ue = ur.doLogin(u_tel,u_pwd);
+//
+//    }
 }
