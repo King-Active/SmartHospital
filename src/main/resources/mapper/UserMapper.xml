@@ -2,9 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.smarthospital_back.mapper.UserMapper">
-    <select id="doLogin" resultType="org.example.smarthospital_back.entity.UserEntity">
-        select * from User where u_id = #{u_id} and u_pwd = #{u_pwd};
+
+    <!-- 检查用户是否存在 -->
+    <select id="checkUserExists" resultType="org.example.smarthospital_back.entity.UserEntity">
+        select * from User where u_tel = #{u_tel};
     </select>
+
+    <!-- 用户登录 -->
+    <select id="doLogin" resultType="org.example.smarthospital_back.entity.UserEntity">
+        select * from User where u_tel = #{u_tel} and u_pwd = #{u_pwd};
+    </select>
+
+    <!-- 用户注册 -->
     <insert id="doRegister" parameterType="org.example.smarthospital_back.entity.UserEntity">
         insert into User (u_tel, u_pwd) values (#{u_tel}, #{u_pwd});
     </insert>

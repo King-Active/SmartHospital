@@ -11,11 +11,11 @@ public class UserRepositoryImp implements UserRepository {
     @Autowired
     UserMapper usermapper;
     @Override
-    public UserEntity doLogin(long u_id, String u_pwd) {
-        return usermapper.doLogin(u_id,u_pwd);
+    public UserEntity doLogin(String u_tel, String u_pwd) {
+        return usermapper.doLogin(u_tel,u_pwd);
     }
     @Override
-    public int doRegister(long u_tel, String u_pwd) {
+    public int doRegister(String u_tel, String u_pwd) {
         return usermapper.doRegister(u_tel,u_pwd);
     }
 }
