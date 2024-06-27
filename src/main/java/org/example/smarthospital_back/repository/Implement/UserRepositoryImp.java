@@ -11,6 +11,10 @@ public class UserRepositoryImp implements UserRepository {
     @Autowired
     UserMapper usermapper;
     @Override
+    public UserEntity checkUserExists(String u_tel) {
+        return usermapper.checkUserExists(u_tel);
+    }
+    @Override
     public UserEntity doLogin(String u_tel, String u_pwd) {
         return usermapper.doLogin(u_tel,u_pwd);
     }

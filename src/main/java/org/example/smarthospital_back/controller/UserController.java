@@ -13,41 +13,44 @@ public class UserController {
 
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
-    public int doLogin(String u_tel,String u_pwd){
+    public String doLogin(String u_tel,String u_pwd){
         System.out.println("log");
         System.out.println(u_tel);
         System.out.println(u_pwd);
         if("".equals(u_tel) || "".equals(u_pwd)){
-            System.out.println("0");
-            return 0;
+            return "格式错误";
         }
         UserEntity ue = ur.doLogin(u_tel,u_pwd);
         if(ue == null) {
-            System.out.println("1");
-            return 1;
+            return "账号或密码错误";
         } else {
-            System.out.println("2");
-            return 2;
+            return "登录成功";
         }
     }
 
     @RequestMapping(value = "/doRegister", method = RequestMethod.POST)
     @ResponseBody
-    public int doRegister(String u_tel,String u_pwd){
+    public String doRegister(String u_tel,String u_pwd){
         System.out.println("reg");
         System.out.println(u_tel);
         System.out.println(u_pwd);
         if("".equals(u_tel) || "".equals(u_pwd)){
-            return 0;
+            return "格式错误";
         }
-        int regResult = ur.doRegister(u_tel,u_pwd);
-        return 1;
+        UserEntity ue = ur.checkUserExists(u_tel);
+        if(ue == null) {
+            int regResult = ur.doRegister(u_tel,u_pwd);
+            return "注册成功";
+        }
+        else{
+            return "该用户已存在";
+        }
     }
 
     @RequestMapping(value = "/doTest", method = RequestMethod.GET)
     @ResponseBody
     public String doTest(){
-        System.out.println("oiashfoiahfoiahioa");
+        System.out.println("test success");
         return "登录成功";
     }
 }
