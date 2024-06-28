@@ -2,6 +2,7 @@ package org.example.smarthospital_back.controller;
 
 import org.example.smarthospital_back.repository.FeeRepository;
 import org.example.smarthospital_back.repository.MapRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.system.ApplicationHome;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,9 @@ import java.util.UUID;
 @CrossOrigin
 @RequestMapping("/Map")
 public class ImgController {
-    MapRepository mr;
 
+    @Autowired
+    MapRepository mr;
     @PostMapping("/sendMap")
     @ResponseBody
     public int upload(String m_name, MultipartFile file) {
@@ -49,6 +51,7 @@ public class ImgController {
     @ResponseBody
     public String download(long m_id){
         String result = mr.getMap(m_id);
+        if(result == null) return "false";
         return result;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.List;
-
+@Repository
 public interface FeeRepository {
     int generateFee(String fee_type,
                     long u_id,

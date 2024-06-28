@@ -10,7 +10,7 @@
     </insert>
 
     <!-- 检查缴费单 -->
-    <select id="getMap" resultType="org.example.smarthospital_back.entity.MapEntity">
-        select m_map_url from Map where m_id = #{m_id};
+    <select id="getMap" resultType="String">
+        select m_pic_url from Map where m_id = #{m_id};
     </select>
 </mapper>
